@@ -29,8 +29,22 @@ const APP = {
     valorarBoton: function (funcion) {
         try{ //bloque try/catch para evitar que la app reviente en caso de error (control de errores)
             switch (funcion) {
+                case "Up":
+                    this.mayuscula();
+                    break;
+                case "borrar":
+                    this.borrarCaracter();
+                    break;
+                case "espacio":
+                    this.crearEspacio();
+                    break;
                 case "C":
                     this.limpiar();
+                    break;
+                case "CE":
+                    break;
+                case "tabular":
+                    this.crearTabulacion();
                     break;
                 default:
                     break;
@@ -47,11 +61,36 @@ const APP = {
     renderLetras: function (letra) {
         this.input.value += letra; // renderiza cada letra pulsada
     },
+    /**
+     * TODO 4: MAYUSCULAS A UNO O DOS TOQUES
+     */
+    mayuscula: function(){},
+    /**
+     * TODO 5: BORRAR CARACTERES ✔
+     */
+    borrarCaracter: function(){
+        let contenidoInput = this.input.value; //obtengo el valor del input
+        /**
+         * paso al input el recorte desde el inicio del string hasta la última posicion,
+         * simulando que se recorta por caracteres el string en el input al pulsar el boton
+         */
+        this.input.value = contenidoInput.slice(0, contenidoInput.length - 1);
+    },
+    /**
+     * TODO 6: CREAR ESPACIOS
+     */
+    crearEspacio: function(){
+        this.input.value += " ";
+    },
 
     limpiar: function () {
         this.input.value = ""; //funcion que se encarga de limpiar el valor dle input
 
     },
+
+    crearTabulacion: function(){
+        this.input.value += "      ";
+    }
 
 }
 APP.inicio(); //llamada a la funcion inicial para que se ejecute la app y se puedan escuchar los eventos "click"
