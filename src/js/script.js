@@ -5,12 +5,10 @@ const APP = {
      * TODO 1: HACER INICIO DE MANERA QUE OBTENGA LOS BOTONES Y LOS VALORES ✔
      */
     inicio: function () {
-        //obtengo los botones
 
-        const botones = document.querySelectorAll(".button");
+        const botones = document.querySelectorAll(".button"); //obtengo los botones
 
-        //los recorro para conocer los valores de cada uno
-        botones.forEach(boton => {
+        botones.forEach(boton => { //los recorro para conocer los valores de cada uno
             boton.addEventListener("click", function () {
 
                 if (!boton.getAttribute("name")) { //valora si el boton es una letra o no mediante el atributo "name"
@@ -27,32 +25,9 @@ const APP = {
      * @param funcion recibe el valor del boton para valorar qué función se debe ejecutar
      */
     valorarBoton: function (funcion) {
-        try{ //bloque try/catch para evitar que la app reviente en caso de error (control de errores)
-            switch (funcion) {
-                case "Up":
-                    this.mayuscula();
-                    break;
-                case "borrar":
-                    this.borrarCaracter();
-                    break;
-                case "espacio":
-                    this.crearEspacio();
-                    break;
-                case "C":
-                    this.limpiar();
-                    break;
-                case "CE":
-                    break;
-                case "tabular":
-                    this.crearTabulacion();
-                    break;
-                default:
-                    break;
-            }
-        } catch (e) {
-            console.error(e);
-        }
-
+        //this se utiliza para acceder a recursos que estén en un mismo objeto {clave:valor} (en este caso)
+        this[funcion](); //lo que va entre corchetes es el nombre del atributo que es === al de la funcion y los parentesis indican que es una funcion con ese nombre
+        //este metodo es una manera de buscar funciones que se llamen igual que un string que le pasemos y las ejecute
     },
     /**
      * TODO 3: RENDERIZAR LETRAS EN LOS INPUTS ✔
@@ -68,7 +43,7 @@ const APP = {
     /**
      * TODO 5: BORRAR CARACTERES ✔
      */
-    borrarCaracter: function(){
+    borrar: function(){
         let contenidoInput = this.input.value; //obtengo el valor del input
         /**
          * paso al input el recorte desde el inicio del string hasta la última posicion,
@@ -79,18 +54,18 @@ const APP = {
     /**
      * TODO 6: CREAR ESPACIOS ✔
      */
-    crearEspacio: function(){
+    espacio: function(){
         this.input.value += " ";
     },
 
-    limpiar: function () {
+    borradoTotal: function () {
         this.input.value = ""; //funcion que se encarga de limpiar el valor dle input
 
     },
     /**
      * TODO 7: CREAR TABULACIONES ✔
      */
-    crearTabulacion: function(){
+    tabular: function(){
         this.input.value += "      ";
     }
 
