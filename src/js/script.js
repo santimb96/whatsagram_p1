@@ -77,7 +77,7 @@ const APP = {
         this.input.value = contenidoInput.slice(0, contenidoInput.length - 1);
     },
     /**
-     * TODO 6: CREAR ESPACIOS
+     * TODO 6: CREAR ESPACIOS ✔
      */
     crearEspacio: function(){
         this.input.value += " ";
@@ -87,7 +87,9 @@ const APP = {
         this.input.value = ""; //funcion que se encarga de limpiar el valor dle input
 
     },
-
+    /**
+     * TODO 7: CREAR TABULACIONES ✔
+     */
     crearTabulacion: function(){
         this.input.value += "      ";
     }
