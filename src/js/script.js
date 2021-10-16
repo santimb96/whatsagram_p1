@@ -1,14 +1,22 @@
 const APP = {
-    input: document.getElementById("input"),
+    input: document.getElementById("input"), //obtenemos el input para operar con él
+    teclado: document.querySelectorAll(".button"), //obtenemos el teclado para evitar repetir codigo
+    estadoTecla: false, //estado de las teclas por defecto en minuscula (false)
+    mayusPermanente: false, //mayusculas permanentes en false
 
     /**
      * TODO 1: HACER INICIO DE MANERA QUE OBTENGA LOS BOTONES Y LOS VALORES ✔
      */
     inicio: function () {
 
-        const botones = document.querySelectorAll(".button"); //obtengo los botones
+        //const botones = document.querySelectorAll(".button"); //obtengo los botones
+        const boton = document.getElementById("button"); //obtengo boton para dbclick
 
-        botones.forEach(boton => { //los recorro para conocer los valores de cada uno
+        boton.addEventListener("dblclick", function () { //este listener se encargara de escuchar el evento doble click si se produce
+            this.permaMayus(); //ejecuta la funcion de las mayusculas permanentes
+        }.bind(this))
+
+        this.teclado.forEach(boton => { //los recorro para conocer los valores de cada uno
             boton.addEventListener("click", function () {
 
                 if (!boton.getAttribute("name")) { //valora si el boton es una letra o no mediante el atributo "name"
@@ -21,7 +29,7 @@ const APP = {
 
     },
     /**
-     * TODO 2: REALIZAR CHEQUEO DEL VALOR DE LOS BOTONES E IR A SUS FUNCIONES
+     * TODO 2: REALIZAR CHEQUEO DEL VALOR DE LOS BOTONES E IR A SUS FUNCIONES ✔
      * @param funcion recibe el valor del boton para valorar qué función se debe ejecutar
      */
     valorarBoton: function (funcion) {
@@ -34,16 +42,56 @@ const APP = {
      * @param letra recibe el valor de la letra presionada
      */
     renderLetras: function (letra) {
-        this.input.value += letra; // renderiza cada letra pulsada
+        if (this.input.value === "") { //si el input esta vacio, primera lietra en mayusculas
+            this.input.value += letra.toUpperCase();
+        } else if (this.estadoTecla) { //si las teclas estan en mayusculas, render en upperCase
+            this.input.value += letra.toUpperCase();
+            if (this.mayusPermanente) { //si es mayus permanente, evitamos que se pongan las teclas en minusculas
+                this.estadoTecla = true;
+            } else {
+                this.estadoTecla = false; // si no, se pondrán en minusculas con el estado en false
+            }
+        } else {
+            this.input.value += letra; //insertamos valor normal y corriente en el input
+        }
     },
     /**
-     * TODO 4: MAYUSCULAS A UNO O DOS TOQUES
+     * TODO 4: MAYUSCULAS A UN TOQUE ✔
      */
-    mayuscula: function(){},
+    mayuscula: function () { //comprueba si el estado de la tecla es verdad y las pasa a minusculas y el permanente a false
+        if (this.estadoTecla) {
+            this.minus();
+            this.mayusPermanente = false;
+        } else {
+            this.teclado.forEach(boton => {
+                boton.textContent = boton.textContent.toUpperCase();
+            })
+            this.estadoTecla = true;
+        }
+    },
+    /**
+     * TODO 8: MAYUSUCULAS PERMANENTES ✔
+     */
+    permaMayus: function () { //recorro las teclas y establezco que sean permanentemente mayusuclas y estado true
+        this.teclado.forEach(boton => {
+            boton.textContent = boton.textContent.toUpperCase();
+        });
+        this.estadoTecla = true;
+    },
+    /**
+     * TODO 9: MINUSUCULAS ✔
+     */
+    minus: function () { //recorro los botones y los paso a minusculas y establezco que el estado de las teclas es false(minus)
+        this.teclado.forEach(boton => {
+            boton.textContent = boton.textContent.toLowerCase();
+        });
+        this.estadoTecla = false;
+    },
+
     /**
      * TODO 5: BORRAR CARACTERES ✔
      */
-    borrar: function(){
+    borrar: function () {
         let contenidoInput = this.input.value; //obtengo el valor del input
         /**
          * paso al input el recorte desde el inicio del string hasta la última posicion,
@@ -54,7 +102,7 @@ const APP = {
     /**
      * TODO 6: CREAR ESPACIOS ✔
      */
-    espacio: function(){
+    espacio: function () {
         this.input.value += " ";
     },
 
@@ -65,7 +113,7 @@ const APP = {
     /**
      * TODO 7: CREAR TABULACIONES ✔
      */
-    tabular: function(){
+    tabular: function () {
         this.input.value += "      ";
     }
 
