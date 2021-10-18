@@ -121,10 +121,11 @@ const APP = {
      * TODO 10: ENVIAR MENSAJE ✔
      */
     enviarTexto: function(){
+        let fecha = new Date() //objeto date para manejar la fecha de envío del mensaje
         let vistaMensajes = document.getElementsByClassName("vistaMensajes")[0]; //obtengo el div para pintar mensajes
         let elemento = document.createElement("div"); //creo un elemento div
         elemento.setAttribute("class", "mensaje"); //creamos una clase para el div para poder darle estilo
-        let texto = document.createTextNode(this.input.value); //creamos nodo de texto mediante el contenido del input
+        let texto = document.createTextNode(`${this.input.value} ${fecha.getHours()}:${fecha.getMinutes()}`); //creamos nodo de texto mediante el contenido del input
         elemento.appendChild(texto); //añadimos al elemento el texto
 
         vistaMensajes.appendChild(elemento); //añadimos al contenedor padre los mensajes que se iran pintando
