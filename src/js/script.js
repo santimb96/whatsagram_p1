@@ -87,7 +87,6 @@ const APP = {
         });
         this.estadoTecla = false;
     },
-
     /**
      * TODO 5: BORRAR CARACTERES ✔
      */
@@ -111,10 +110,39 @@ const APP = {
 
     },
     /**
-     * TODO 7: CREAR TABULACIONES ✔
+     * TODO 7: BORRAR PRIMER CARACTER ✔
      */
-    tabular: function () {
-        this.input.value += "      ";
+    borrarPrimero: function () {
+        let contenidoInput = this.input.value; //obtenemos el valor del input
+
+        this.input.value = contenidoInput.slice(1); //cada vez que pase por aqui, borrara el primer elemento
+    },
+    /**
+     * TODO 10: ENVIAR MENSAJE ✔
+     */
+    enviarTexto: function(){
+        let vistaMensajes = document.getElementsByClassName("vistaMensajes")[0]; //obtengo el div para pintar mensajes
+        let elemento = document.createElement("div"); //creo un elemento div
+        elemento.setAttribute("class", "mensaje"); //creamos una clase para el div para poder darle estilo
+        let texto = document.createTextNode(this.input.value); //creamos nodo de texto mediante el contenido del input
+        elemento.appendChild(texto); //añadimos al elemento el texto
+
+        vistaMensajes.appendChild(elemento); //añadimos al contenedor padre los mensajes que se iran pintando
+    },
+    /**
+     * TODO 11: BORRAR ULTIMA PALABRA ✔
+     */
+    ultimaPalabra: function(){
+        let input = (this.input.value).trim();
+
+        let ultimaPalabra = input.lastIndexOf(" ");
+        this.input.value = input.substring(0, ultimaPalabra);
+    },
+    /**
+     * TODO 12: INTRO ✔
+     */
+    intro: function(){
+        this.input.value += "\n";
     }
 
 }
