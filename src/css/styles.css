@@ -1,4 +1,4 @@
-@font-face { font-family: "Roboto Light"; src: url("../fonts/Roboto-Light.ttf") }
+/**@font-face { font-family: "Roboto Light"; src: url("../fonts/Roboto-Light.ttf") }**/
 body {
     background: black;
     margin: 0;
@@ -136,11 +136,13 @@ body {
     border: black 1px solid;
 }
 .mensaje{
-    background-color: white;
+    color: white;
+    background: #131313;
+    padding: 2px 5px;
     min-width: 20%;
     max-width: 80%;
-    border-radius: 10%;
-    margin: 2px;
+    border-radius: 7px;
+    margin: 3px;
 }
 
 @media only screen and (min-width: 600px) {
