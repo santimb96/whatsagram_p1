@@ -1,95 +1,137 @@
-body{
-    width: 360px;
+body {
     background: black;
+    margin: 0;
 }
-@media screen and (min-width: 360px){
-    .interfaz {
-        background-image: url("../img/whatsappBackground.jpg");
-        height: 640px;
+.interfaz {
+    background-image: url("../img/whatsappBackground.jpg");
+    width: 360px;
+    height: 640px;
+    display: grid;
+    grid-template-rows: 10% 50% 10% 30%;
+
+}
+.cabecera{
+    display: grid;
+    color: white;
+    font-weight: bold;
+    background-color: #131313;
+    border: black 1px solid;
+    grid-template-columns: 20% 90%;
+    grid-template-rows: 100%;
+}
+.cabecera > img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: white 1px solid;
+    margin: 10px;
+    place-items: start;
+}
+.cabecera > div {
+    align-self: center;
+}
+#usuario{
+    font-size: 1rem;
+    margin-bottom: 0;
+}
+#estado{
+    font-size: 0.8rem;
+    margin-top: 0;
+}
+.vistaMensajes{
+    /*grid-area: "mensajes";*/
+}
+.inputBox {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    align-items: flex-end;
+    margin-top: 25px;
+    padding: 3px;
+}
+
+.inputBox > button {
+    width: 20%;
+    height: 100%;
+}
+
+.inputBox > textarea {
+    grid-column-start: 2;
+    border-radius: 10px;
+    background-color: #535353;
+    color: white;
+    font-size: 18px;
+    resize: none;
+    height: 28px;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.botones {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    align-items: flex-end;
+    background-color: #131313;
+    padding: 3px;
+}
+
+#enviar {
+    width: 35px;
+    height: 35px;
+    background-color: #131313;
+    border-radius: 50%;
+    margin-left: 15px;
+    border: none;
+}
+
+.button:nth-child(21) {
+    width: 15%;
+}
+
+.button:nth-child(29) {
+    width: 15%;
+}
+
+.button:nth-child(32) {
+    width: 15%;
+}
+
+.button:nth-child(34) {
+    width: 30%;
+}
+
+.button:nth-child(36) {
+    width: 15%;
+}
+
+.button:hover {
+    background-color: dimgrey;
+}
+
+#enviar:hover {
+    background-color: grey;
+}
+
+.button {
+    border-radius: 10px;
+    width: 10%;
+    height: 25%;
+    color: white;
+    background-color: #5b5b5b;
+    border: black 1px solid;
+}
+
+@media only screen and (min-width: 600px) {
+    body {
+        background-color: black;
         display: grid;
         grid-template-columns: 100%;
-        grid-template-rows: 60% 10% 30%;
-    }
-    .inputBox{
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-content: flex-start;
-        align-items: flex-end;
-        margin-top: 25px;
-        /*display: grid;
-        height: 40px;
-        grid-template-rows: 100%;
-        grid-template-columns: 10% 70% 20%;
-        gap: 2px;
-        text-align: center;
-        margin: 16px 16px 16px 5px;*/
-    }
-    .inputBox > button {
-        width: 20%;
-        height: 88%;
-    }
-    .inputBox > textarea {
-        grid-column-start: 2;
-        border-radius: 10px;
-        background-color: #535353;
-        color: white;
-        font-size: 18px;
-        resize: none;
-        height: 28px;
-    }
-    ::-webkit-scrollbar{
-        display: none;
-    }
-    .botones{
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-content: flex-start;
-        align-items: flex-end;
-        background-color: #131313;
-    }
-    #enviar{
-        width: 35px;
-        height: 35px;
-        background-color: darkgreen;
-        border-radius: 50%;
-        margin-left: 15px;
-        border: none;
-    }
-    .button:nth-child(21){
-        width: 15%;
-    }
-    .button:nth-child(29){
-        width: 15%;
-    }
-    .button:nth-child(32){
-        width: 15%;
-    }
-    .button:nth-child(34){
-        width: 30%;
-    }
-    .button:nth-child(36){
-        width: 15%;
-    }
-    .button:hover{
-        background-color: dimgrey;
-    }
-    #enviar:hover{
-        background-color: green;
-    }
-    .button{
-        border-radius: 10px;
-        width: 10%;
-        height: 25%;
-        color: white;
-        background-color: #5b5b5b;
-        border: black 1px solid;
-       /* width: 2.3em;
-        height: 3em;
-        margin-left: 1%;
-        margin-right: 1%;
-        margin-bottom: 1%;*/
+        justify-items: center;
     }
 
 }
