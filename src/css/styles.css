@@ -1,17 +1,24 @@
+@font-face { font-family: "Roboto Light"; src: url("../fonts/Roboto-Light.ttf") }
 body {
     background: black;
     margin: 0;
-    font-family: "Roboto", sans-serif;
+    font-family: "Roboto Light", sans-serif;
 }
+
 .interfaz {
     background-image: url("../img/whatsappBackground.jpg");
-    width: 360px;
     height: 640px;
+    width: 360px;
     display: grid;
     grid-template-rows: 10% 50% 10% 30%;
-
 }
-.cabecera{
+.vistaMensajes{
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.cabecera {
     display: grid;
     color: white;
     font-weight: bold;
@@ -20,7 +27,8 @@ body {
     grid-template-columns: 20% 90%;
     grid-template-rows: 100%;
 }
-.cabecera > img{
+
+.cabecera > img {
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -28,20 +36,21 @@ body {
     margin: 10px;
     place-items: start;
 }
+
 .cabecera > div {
     align-self: center;
 }
-#usuario{
+
+#usuario {
     font-size: 1rem;
     margin-bottom: 0;
 }
-#estado{
+
+#estado {
     font-size: 0.8rem;
     margin-top: 0;
 }
-.vistaMensajes{
-    /*grid-area: "mensajes";*/
-}
+
 .inputBox {
     display: flex;
     flex-direction: row;
@@ -126,6 +135,13 @@ body {
     background-color: #5b5b5b;
     border: black 1px solid;
 }
+.mensaje{
+    background-color: white;
+    min-width: 20%;
+    max-width: 80%;
+    border-radius: 10%;
+    margin: 2px;
+}
 
 @media only screen and (min-width: 600px) {
     body {
@@ -134,7 +150,6 @@ body {
         grid-template-columns: 100%;
         justify-items: center;
     }
-
 }
 
 
