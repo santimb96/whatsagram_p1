@@ -129,6 +129,7 @@ const APP = {
         elemento.appendChild(texto); //añadimos al elemento el texto
 
         vistaMensajes.appendChild(elemento); //añadimos al contenedor padre los mensajes que se iran pintando
+        this.input.value = "";
     },
     /**
      * TODO 11: BORRAR ULTIMA PALABRA ✔
