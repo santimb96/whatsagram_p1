@@ -55,7 +55,7 @@ const APP = {
     /**
      * TODO 4: MAYUSCULAS A UN TOQUE; MAYUS/MINUS DEPENDIENDO DEL ESTADO DEL CONTADOR ✔
      */
-    mayuscula: function (letra) { //comprueba si el estado de la tecla es 0 o 1
+    mayuscula: function () { //comprueba si el estado de la tecla es 0 o 1
         if (this.contadorMayus === 0) { // si el estado es 0 (minus), establezco que sea 1 y paso las teclas a mayusculas
             this.contadorMayus = 1;
             this.teclado.forEach(boton => {
