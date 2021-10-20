@@ -3,6 +3,7 @@ const APP = {
     teclado: document.querySelectorAll(".button"), //obtenemos el teclado para evitar repetir codigo
     estadoTecla: false, //estado de las teclas por defecto en minuscula (false)
     mayusPermanente: false, //mayusculas permanentes en false
+    contadorMayus: 0,
 
     /**
      * TODO 1: HACER INICIO DE MANERA QUE OBTENGA LOS BOTONES Y LOS VALORES ✔
@@ -42,10 +43,11 @@ const APP = {
      * @param letra recibe el valor de la letra presionada
      */
     renderLetras: function (letra) {
-        if (this.input.value === "") { //si el input esta vacio, primera lietra en mayusculas
+        /*if (this.input.value === "") { //si el input esta vacio, primera lietra en mayusculas
             this.input.value += letra.toUpperCase();
         } else if (this.estadoTecla) { //si las teclas estan en mayusculas, render en upperCase
             this.input.value += letra.toUpperCase();
+            this.estadoTecla = false;
             if (this.mayusPermanente) { //si es mayus permanente, evitamos que se pongan las teclas en minusculas
                 this.estadoTecla = true;
             } else {
@@ -53,39 +55,69 @@ const APP = {
             }
         } else {
             this.input.value += letra; //insertamos valor normal y corriente en el input
+        }*/
+        if(this.input.value === ""){
+            this.input.value += letra.toUpperCase();
+        } else if (this.contadorMayus === 1){
+            this.input.value += letra;
+            this.minus();
+        } else {
+            this.input.value += letra;
         }
     },
+
     /**
      * TODO 4: MAYUSCULAS A UN TOQUE ✔
      */
-    mayuscula: function () { //comprueba si el estado de la tecla es verdad y las pasa a minusculas y el permanente a false
-        if (this.estadoTecla) {
+    mayuscula: function (letra) { //comprueba si el estado de la tecla es verdad y las pasa a minusculas y el permanente a false
+     /*   if (this.estadoTecla) {
             this.minus();
             this.mayusPermanente = false;
+            this.estadoTecla = false;
         } else {
             this.teclado.forEach(boton => {
                 boton.textContent = boton.textContent.toUpperCase();
             })
             this.estadoTecla = true;
+        }*/
+        if(this.contadorMayus === 0){
+            this.contadorMayus = 1;
+            this.teclado.forEach(boton => {
+                boton.textContent = boton.textContent.toUpperCase();
+            });
+        } else if (this.contadorMayus >= 1){
+            this.contadorMayus = 0;
+            this.minus();
         }
     },
     /**
      * TODO 8: MAYUSUCULAS PERMANENTES ✔
      */
     permaMayus: function () { //recorro las teclas y establezco que sean permanentemente mayusuclas y estado true
+        /*this.teclado.forEach(boton => {
+            boton.textContent = boton.textContent.toUpperCase();
+        });
+        this.estadoTecla = true;*/
+        this.contadorMayus = 2;
+
         this.teclado.forEach(boton => {
             boton.textContent = boton.textContent.toUpperCase();
         });
-        this.estadoTecla = true;
+
     },
     /**
      * TODO 9: MINUSUCULAS ✔
      */
     minus: function () { //recorro los botones y los paso a minusculas y establezco que el estado de las teclas es false(minus)
+        /*this.teclado.forEach(boton => {
+            boton.textContent = boton.textContent.toLowerCase();
+        });
+
+        this.estadoTecla = false;*/
         this.teclado.forEach(boton => {
             boton.textContent = boton.textContent.toLowerCase();
         });
-        this.estadoTecla = false;
+        this.contadorMayus = 0;
     },
     /**
      * TODO 5: BORRAR CARACTERES ✔
@@ -128,7 +160,7 @@ const APP = {
             let vistaMensajes = document.getElementsByClassName("vistaMensajes")[0]; //obtengo el div para pintar mensajes
             let elemento = document.createElement("div"); //creo un elemento div
             elemento.setAttribute("class", "mensaje"); //creamos una clase para el div para poder darle estilo
-            let texto = document.createTextNode(`${this.input.value} ${fecha.getHours()}:${fecha.getMinutes()}`); //creamos nodo de texto mediante el contenido del input
+            let texto = document.createTextNode(`${this.input.value} ${("0"+fecha.getHours()).slice(-2)+':'+("0"+fecha.getMinutes()).slice(-2)}`); //creamos nodo de texto mediante el contenido del input
             elemento.appendChild(texto); //añadimos al elemento el texto
 
             vistaMensajes.appendChild(elemento); //añadimos al contenedor padre los mensajes que se iran pintando
