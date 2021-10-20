@@ -12,12 +12,14 @@ body {
     display: grid;
     grid-template-rows: 10% 50% 10% 30%;
 }
-.vistaMensajes{
+
+.vistaMensajes {
     display: flex;
     justify-content: flex-end;
     flex-direction: column;
     align-items: flex-end;
 }
+
 .cabecera {
     display: grid;
     color: white;
@@ -137,7 +139,8 @@ body {
     background-color: #5b5b5b;
     border: black 1px solid;
 }
-.mensaje{
+
+.mensaje {
     color: white;
     background: #131313;
     padding: 2px 5px;
@@ -145,6 +148,13 @@ body {
     max-width: 100%;
     border-radius: 7px;
     margin: 3px;
+}
+
+.hora {
+    font-size: 10px;
+    color: darkgrey;
+    margin-top: 2px;
+    margin-left: 100px;
 }
 
 @media only screen and (min-width: 600px) {

@@ -43,49 +43,25 @@ const APP = {
      * @param letra recibe el valor de la letra presionada
      */
     renderLetras: function (letra) {
-        /*if (this.input.value === "") { //si el input esta vacio, primera lietra en mayusculas
+        if (this.input.value === "") { // si el input está vacio, la primera letra será mayuscula
             this.input.value += letra.toUpperCase();
-        } else if (this.estadoTecla) { //si las teclas estan en mayusculas, render en upperCase
-            this.input.value += letra.toUpperCase();
-            this.estadoTecla = false;
-            if (this.mayusPermanente) { //si es mayus permanente, evitamos que se pongan las teclas en minusculas
-                this.estadoTecla = true;
-            } else {
-                this.estadoTecla = false; // si no, se pondrán en minusculas con el estado en false
-            }
-        } else {
-            this.input.value += letra; //insertamos valor normal y corriente en el input
-        }*/
-        if(this.input.value === ""){
-            this.input.value += letra.toUpperCase();
-        } else if (this.contadorMayus === 1){
+        } else if (this.contadorMayus === 1) { // si el teclado esta en mayusculas, renderiza la letra y pasa el teclado a minus
             this.input.value += letra;
             this.minus();
         } else {
-            this.input.value += letra;
+            this.input.value += letra; // si por defecto esta en minuscula, renderiza la letra y finaliza esta ejecucion
         }
     },
-
     /**
-     * TODO 4: MAYUSCULAS A UN TOQUE ✔
+     * TODO 4: MAYUSCULAS A UN TOQUE; MAYUS/MINUS DEPENDIENDO DEL ESTADO DEL CONTADOR ✔
      */
-    mayuscula: function (letra) { //comprueba si el estado de la tecla es verdad y las pasa a minusculas y el permanente a false
-     /*   if (this.estadoTecla) {
-            this.minus();
-            this.mayusPermanente = false;
-            this.estadoTecla = false;
-        } else {
-            this.teclado.forEach(boton => {
-                boton.textContent = boton.textContent.toUpperCase();
-            })
-            this.estadoTecla = true;
-        }*/
-        if(this.contadorMayus === 0){
+    mayuscula: function (letra) { //comprueba si el estado de la tecla es 0 o 1
+        if (this.contadorMayus === 0) { // si el estado es 0 (minus), establezco que sea 1 y paso las teclas a mayusculas
             this.contadorMayus = 1;
             this.teclado.forEach(boton => {
                 boton.textContent = boton.textContent.toUpperCase();
             });
-        } else if (this.contadorMayus >= 1){
+        } else if (this.contadorMayus >= 1) { //si el estado es 1 o 2 (mayus o mayusculas permanentes), establezco que se ponga en 0 y minus
             this.contadorMayus = 0;
             this.minus();
         }
@@ -93,27 +69,16 @@ const APP = {
     /**
      * TODO 8: MAYUSUCULAS PERMANENTES ✔
      */
-    permaMayus: function () { //recorro las teclas y establezco que sean permanentemente mayusuclas y estado true
-        /*this.teclado.forEach(boton => {
-            boton.textContent = boton.textContent.toUpperCase();
-        });
-        this.estadoTecla = true;*/
+    permaMayus: function () { //recorro las teclas y establezco que sean permanentemente mayusculas y estado 2(permanente)
         this.contadorMayus = 2;
-
         this.teclado.forEach(boton => {
             boton.textContent = boton.textContent.toUpperCase();
         });
-
     },
     /**
      * TODO 9: MINUSUCULAS ✔
      */
-    minus: function () { //recorro los botones y los paso a minusculas y establezco que el estado de las teclas es false(minus)
-        /*this.teclado.forEach(boton => {
-            boton.textContent = boton.textContent.toLowerCase();
-        });
-
-        this.estadoTecla = false;*/
+    minus: function () { //recorro los botones y los paso a minusculas y establezco que el contador de las mayusculas sea 0(minus)
         this.teclado.forEach(boton => {
             boton.textContent = boton.textContent.toLowerCase();
         });
@@ -138,30 +103,44 @@ const APP = {
     },
 
     borradoTotal: function () {
-        this.input.value = ""; //funcion que se encarga de limpiar el valor dle input
+        this.input.value = ""; //funcion que se encarga de limpiar el valor del input
 
     },
     /**
      * TODO 7: BORRAR PRIMER CARACTER ✔
      */
     borrarPrimero: function () {
-        let contenidoInput = this.input.value; //obtenemos el valor del input
+        let contenidoInput = this.input.value; //obtenemos el valor del input en local
 
         this.input.value = contenidoInput.slice(1); //cada vez que pase por aqui, borrara el primer elemento
     },
     /**
      * TODO 10: ENVIAR MENSAJE ✔
      */
-    enviarTexto: function(){
-        if(this.input.value === ""){
+    enviarTexto: function () {
+        if (this.input.value === "") {
             //no se envia nada porque esta vacio
-        }else {
+        } else {
             let fecha = new Date() //objeto date para manejar la fecha de envío del mensaje
+
             let vistaMensajes = document.getElementsByClassName("vistaMensajes")[0]; //obtengo el div para pintar mensajes
+
             let elemento = document.createElement("div"); //creo un elemento div
+
             elemento.setAttribute("class", "mensaje"); //creamos una clase para el div para poder darle estilo
-            let texto = document.createTextNode(`${this.input.value} ${("0"+fecha.getHours()).slice(-2)+':'+("0"+fecha.getMinutes()).slice(-2)}`); //creamos nodo de texto mediante el contenido del input
+
+            let texto = document.createTextNode(`${this.input.value} `); //creamos nodo de texto mediante el contenido del input
+
+            let p = document.createElement("p");
+
+            p.setAttribute("class", "hora");
+
+            let hora =document.createTextNode(("0" + fecha.getHours()).slice(-2) + ':' + ("0" + fecha.getMinutes()).slice(-2));
+
+            p.appendChild(hora);
+
             elemento.appendChild(texto); //añadimos al elemento el texto
+            elemento.appendChild(p);
 
             vistaMensajes.appendChild(elemento); //añadimos al contenedor padre los mensajes que se iran pintando
             this.input.value = "";
@@ -170,7 +149,7 @@ const APP = {
     /**
      * TODO 11: BORRAR ULTIMA PALABRA ✔
      */
-    ultimaPalabra: function(){
+    ultimaPalabra: function () {
         let input = (this.input.value).trim();
 
         let ultimaPalabra = input.lastIndexOf(" ");
@@ -179,7 +158,7 @@ const APP = {
     /**
      * TODO 12: INTRO ✔
      */
-    intro: function(){
+    intro: function () {
         this.input.value += "\n";
     }
 
