@@ -3,6 +3,7 @@ const APP = {
     teclado: document.querySelectorAll(".button"), //obtenemos el teclado para evitar repetir codigo
     estadoTecla: false, //estado de las teclas por defecto en minuscula (false)
     contadorMayus: 0,
+    tecladoEmoji: false,
     /**
      * TODO 13: ESTABLECER FECHA INICIAL TOP MENSAJES Y FIJO ✔
      */
@@ -59,6 +60,20 @@ const APP = {
         //this se utiliza para acceder a recursos que estén en un mismo objeto {clave:valor} (en este caso)
         this[funcion](); //lo que va entre corchetes es el nombre del atributo que es === al de la funcion y los parentesis indican que es una funcion con ese nombre
         //este metodo es una manera de buscar funciones que se llamen igual que un string que le pasemos y las ejecute
+    },
+    gif: function(){
+      const emojis = document.getElementById("emojis");
+      const botones = document.getElementById("botones");
+
+      if(this.tecladoEmoji === false){
+          botones.style.display = "none";
+          emojis.style.display = "flex";
+          this.tecladoEmoji = true;
+      } else {
+          emojis.style.display = "none";
+          botones.style.display = "flex";
+          this.tecladoEmoji = false;
+      }
     },
     /**
      * TODO 3: RENDERIZAR LETRAS EN LOS INPUTS ✔

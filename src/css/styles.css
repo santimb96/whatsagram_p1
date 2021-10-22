@@ -146,18 +146,17 @@ body {
     background: #131313;
     padding: 2px 5px;
     min-width: 20%;
-    max-width: 100%;
+    max-width: 70%;
     border-radius: 7px;
     margin: 3px;
 }
 
 .vistaMensajes > .fechaActual {
-    display: flex;
-    flex-direction: column;
     align-self: center;
+    /*
     margin-top: 0;
     margin-bottom: 82%;
-    position: absolute;
+    position: absolute;*/
     background: darkgray;
     border-radius: 5px;
     font-size: 12px;
@@ -170,7 +169,27 @@ body {
     margin-top: 2px;
     margin-left: 100px;
 }
+.emojis{
+    display: none;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    align-items: flex-end;
+    background-color: #131313;
+    padding: 3px;
+}
 
+
+@media only screen and (max-width: 400px){
+    .interfaz {
+        background-image: url("../img/whatsappBackground.jpg");
+        height: 100vh;
+        width: 100vw;
+        display: grid;
+        grid-template-rows: 10% 50% 10% 30%;
+    }
+
+}
 @media only screen and (min-width: 600px) {
     body {
         background-color: black;
