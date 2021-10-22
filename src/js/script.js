@@ -2,9 +2,31 @@ const APP = {
     input: document.getElementById("input"), //obtenemos el input para operar con él
     teclado: document.querySelectorAll(".button"), //obtenemos el teclado para evitar repetir codigo
     estadoTecla: false, //estado de las teclas por defecto en minuscula (false)
-    mayusPermanente: false, //mayusculas permanentes en false
     contadorMayus: 0,
+    /**
+     * TODO 13: ESTABLECER FECHA INICIAL TOP MENSAJES Y FIJO ✔
+     */
+    fechaInicial: function () {
+        /**
+         *
+         * @type {string[]} fijamos el nombre de los meses para obtener posteriormente el nombre completo del mes
+         */
+        const meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
 
+
+        let fechaActual = new Date(); //creamos objeto de fecha
+
+        let vistaMensajes = document.querySelector(".vistaMensajes"); //obtememos la vista de los mensajes
+
+        let div = document.createElement("div"); //creamos elemento div
+
+        div.setAttribute("class", "fechaActual"); //establecemos una clase para manejar estilos den CSS
+
+        let fecha = document.createTextNode(`${fechaActual.getDay()} de ${meses[fechaActual.getMonth()]} de ${fechaActual.getFullYear()}`); //creamos nodo de texto para pintar la fecha
+
+        div.appendChild(fecha); //hacemos append del nodo al div
+        vistaMensajes.appendChild(div); //hacemos append del div con el nodo a la vista de los mensajes
+    },
     /**
      * TODO 1: HACER INICIO DE MANERA QUE OBTENGA LOS BOTONES Y LOS VALORES ✔
      */
@@ -135,7 +157,7 @@ const APP = {
 
             p.setAttribute("class", "hora");
 
-            let hora =document.createTextNode(("0" + fecha.getHours()).slice(-2) + ':' + ("0" + fecha.getMinutes()).slice(-2));
+            let hora = document.createTextNode(("0" + fecha.getHours()).slice(-2) + ':' + ("0" + fecha.getMinutes()).slice(-2));
 
             p.appendChild(hora);
 
@@ -163,4 +185,5 @@ const APP = {
     }
 
 }
+APP.fechaInicial(); //cargamos esta funcion al inicio de la app para que emule a WhatsApp a la hora de cargar la fecha del mensaje inicial
 APP.inicio(); //llamada a la funcion inicial para que se ejecute la app y se puedan escuchar los eventos "click"
