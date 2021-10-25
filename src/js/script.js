@@ -19,14 +19,13 @@ const APP = {
 
         let vistaMensajes = document.querySelector(".vistaMensajes"); //obtememos la vista de los mensajes
 
-        let div = document.createElement("div"); //creamos elemento div
+        let fecha = `${fechaActual.getDay()} de ${meses[fechaActual.getMonth()]} de ${fechaActual.getFullYear()}`; //obtenemos la fecha con un formato X
 
-        div.setAttribute("class", "fechaActual"); //establecemos una clase para manejar estilos den CSS
-
-        let fecha = document.createTextNode(`${fechaActual.getDay()} de ${meses[fechaActual.getMonth()]} de ${fechaActual.getFullYear()}`); //creamos nodo de texto para pintar la fecha
-
-        div.appendChild(fecha); //hacemos append del nodo al div
-        vistaMensajes.appendChild(div); //hacemos append del div con el nodo a la vista de los mensajes
+        /**
+         *
+         * @type {`<div class="fechaActual">${string}</div>`} creamos mediante template string una plantilla la cual tendra ujna clase e imprimira la fecha
+         */
+        vistaMensajes.innerHTML += `<div class="fechaActual">${fecha}</div>`;
     },
     /**
      * TODO 1: HACER INICIO DE MANERA QUE OBTENGA LOS BOTONES Y LOS VALORES ✔
@@ -42,7 +41,7 @@ const APP = {
 
         this.teclado.forEach(boton => { //los recorro para conocer los valores de cada uno
             boton.addEventListener("click", function () {
-
+                this.input.scrollTop = this.input.scrollHeight;
                 if (!boton.getAttribute("name")) { //valora si el boton es una letra o no mediante el atributo "name"
                     this.renderLetras(boton.textContent); //si es una letra, la renderiza en el input
                 } else {
@@ -72,6 +71,7 @@ const APP = {
          */
         const emojis = document.getElementById("emojis");
         const botones = document.getElementById("botones");
+        const gif = document.getElementById("gif");
 
         /**
          * mediante un booleano, comprobamos que teclado esta operativo para intercambiarlo por el otro
@@ -81,10 +81,12 @@ const APP = {
         if (this.tecladoEmoji === false) {
             botones.style.display = "none";
             emojis.style.display = "flex";
+            gif.textContent = "⌨";
             this.tecladoEmoji = true;
         } else {
             emojis.style.display = "none";
             botones.style.display = "flex";
+            gif.textContent = "😀";
             this.tecladoEmoji = false;
         }
     },
@@ -174,26 +176,22 @@ const APP = {
             let fecha = new Date() //objeto date para manejar la fecha de envío del mensaje
 
             let vistaMensajes = document.getElementsByClassName("vistaMensajes")[0]; //obtengo el div para pintar mensajes
+            /**
+             * este while sirve para sustituir del input todos los \n por <br> para que se
+             * pinten los mensajes con los intros
+             */
+            while (this.input.value.includes("\n")) {
+                this.input.value = this.input.value.replace("\n", "<br>");
+            }
 
-            let elemento = document.createElement("div"); //creo un elemento div
 
-            elemento.setAttribute("class", "mensaje"); //creamos una clase para el div para poder darle estilo
+            let hora = ("0" + fecha.getHours()).slice(-2) + ':' + ("0" + fecha.getMinutes()).slice(-2);
 
-            let texto = document.createTextNode(`${this.input.value} `); //creamos nodo de texto mediante el contenido del input
+            vistaMensajes.innerHTML += `<div class="mensaje">${this.input.value}<p class="hora">${hora}</p></div>`;
 
-            let p = document.createElement("p");
-
-            p.setAttribute("class", "hora");
-
-            let hora = document.createTextNode(("0" + fecha.getHours()).slice(-2) + ':' + ("0" + fecha.getMinutes()).slice(-2));
-
-            p.appendChild(hora);
-
-            elemento.appendChild(texto); //añadimos al elemento el texto
-            elemento.appendChild(p);
-
-            vistaMensajes.appendChild(elemento); //añadimos al contenedor padre los mensajes que se iran pintando
             this.input.value = "";
+
+            vistaMensajes.scrollTop = vistaMensajes.scrollHeight;
         }
     },
     /**

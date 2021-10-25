@@ -9,11 +9,14 @@ establecemos el CSS común para toda la app
 /**
 el body tendra estas caracteristicas:
  */
+*{
+    font-family: 'Roboto', sans-serif;
+}
 body {
     background: black;
     margin: 0;
-    font-family: "Roboto Light", sans-serif;
 }
+
 /**
 la interfaz de la app tendra un fondo de imagen y un ancho y un largo fijo (Samsung S5)
 ademas de esto, declaramos que cada fila tendra un porcentaje del largo gracias a grid
@@ -26,6 +29,7 @@ ademas de esto, declaramos que cada fila tendra un porcentaje del largo gracias 
     display: grid;
     grid-template-rows: 10% 50% 10% 30%;
 }
+
 /**
 la vista de los mensajes etsa hecha mediante flex para poderlos visualizar de abajo
 hacia arriba mediante las propiedades flex
@@ -33,10 +37,12 @@ hacia arriba mediante las propiedades flex
 
 .vistaMensajes {
     display: flex;
-    justify-content: flex-end;
     flex-direction: column;
     align-items: flex-end;
+    overflow-y: scroll;
+    scroll-behavior: auto;
 }
+
 /**
 la cabecera tendra una imagen y un texto puramente estetico mediante grid
 e indicando que la cabecera solo ocupa una fila
@@ -123,12 +129,6 @@ asignamos propiedades especificas al textarea meramente esteticas
 }
 
 /**
-establecemos que el scroll no sea visible
- */
-::-webkit-scrollbar {
-    display: none;
-}
-/**
 el contenedor de botones esta hecho mediante flex
  */
 .botones {
@@ -140,6 +140,7 @@ el contenedor de botones esta hecho mediante flex
     background-color: #131313;
     padding: 3px;
 }
+
 /**
 el boton de enviar tiene un estilo especial y por ello tiene su propio ID
  */
@@ -151,6 +152,7 @@ el boton de enviar tiene un estilo especial y por ello tiene su propio ID
     margin-left: 15px;
     border: none;
 }
+
 /**
 en este apartado, establecemos propiedades especificas a cada boton no caracter
  */
@@ -183,9 +185,15 @@ que esta pasando por encima de este
     background-color: dimgrey;
 }
 
+.button:active {
+    background: #E1D9D1;
+    color: #131313;
+}
+
 #enviar:hover {
     background-color: grey;
 }
+
 /**
 estilo para cada boton de manera generica
  */
@@ -198,6 +206,7 @@ estilo para cada boton de manera generica
     background-color: #5b5b5b;
     border: black 1px solid;
 }
+
 /**
 estilos para cada mensaje
  */
@@ -206,10 +215,15 @@ estilos para cada mensaje
     background: #131313;
     padding: 2px 5px;
     min-width: 20%;
-    max-width: 70%;
+    max-width: 90%;
+    /**
+    Word-wrap sirve para cuando se supera el ancho del div, en este caso, haga un salto de linea
+     */
+    Word-wrap: break-Word;
     border-radius: 7px;
     margin: 3px;
 }
+
 /**
 dentro de la vista de los mensajes, cogemos la fecha actual (div que se genera mediante JS),
 y le damos un estilo propio ya que no es un mensaje
@@ -221,6 +235,7 @@ y le damos un estilo propio ya que no es un mensaje
     font-size: 12px;
     padding: 2px;
 }
+
 /**
 estilo semejante a la hora que podemos ver en WhatsApp
  */
@@ -229,12 +244,14 @@ estilo semejante a la hora que podemos ver en WhatsApp
     font-size: 10px;
     color: darkgrey;
     margin-top: 2px;
-    margin-left: 100px;
+    margin-right: 6px;
+    text-align-last: end;
 }
+
 /**
 estilos propios para el teclado de emojis
  */
-.emojis{
+.emojis {
     display: none;
     flex-direction: row;
     flex-wrap: wrap;
@@ -243,11 +260,13 @@ estilos propios para el teclado de emojis
     background-color: #131313;
     padding: 3px;
 }
-.emojis > .button{
+
+.emojis > .button {
     width: 10%;
     height: 25%;
 }
-.emojis > .button:nth-child(31){
+
+.emojis > .button:nth-child(31) {
     width: 100%;
 }
 
@@ -255,7 +274,7 @@ estilos propios para el teclado de emojis
 media query adaptativo a cualquier tipo de dispositivo movil mediante
 la propiedad vh y vw
  */
-@media only screen and (max-width: 400px){
+@media only screen and (max-width: 400px) {
     .interfaz {
         background-image: url("../img/whatsappBackground.jpg");
         height: 100vh;
@@ -265,6 +284,7 @@ la propiedad vh y vw
     }
 
 }
+
 /**
 propiedades especificas para el tamaño desktop de la app
  */
