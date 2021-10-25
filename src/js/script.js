@@ -61,19 +61,32 @@ const APP = {
         this[funcion](); //lo que va entre corchetes es el nombre del atributo que es === al de la funcion y los parentesis indican que es una funcion con ese nombre
         //este metodo es una manera de buscar funciones que se llamen igual que un string que le pasemos y las ejecute
     },
-    gif: function(){
-      const emojis = document.getElementById("emojis");
-      const botones = document.getElementById("botones");
+    /**
+     * TODO 14: BOTON DE EMOJIS/GIF
+     * cuando se pulsa el boton de gif, dependiendo de que teclado este en pantalla, mostrara los emojis o el teclado convencional
+     */
+    gif: function () {
+        /**
+         *
+         * @type {HTMLElement} obtenemos los div con los emojis y con los botones
+         */
+        const emojis = document.getElementById("emojis");
+        const botones = document.getElementById("botones");
 
-      if(this.tecladoEmoji === false){
-          botones.style.display = "none";
-          emojis.style.display = "flex";
-          this.tecladoEmoji = true;
-      } else {
-          emojis.style.display = "none";
-          botones.style.display = "flex";
-          this.tecladoEmoji = false;
-      }
+        /**
+         * mediante un booleano, comprobamos que teclado esta operativo para intercambiarlo por el otro
+         * se hace mediante bool porque por alguna razon detallada en el README.md, no se puede obtener el display de los elementos
+         */
+
+        if (this.tecladoEmoji === false) {
+            botones.style.display = "none";
+            emojis.style.display = "flex";
+            this.tecladoEmoji = true;
+        } else {
+            emojis.style.display = "none";
+            botones.style.display = "flex";
+            this.tecladoEmoji = false;
+        }
     },
     /**
      * TODO 3: RENDERIZAR LETRAS EN LOS INPUTS ✔

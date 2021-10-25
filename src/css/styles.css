@@ -1,9 +1,23 @@
 /**@font-face { font-family: "Roboto Light"; src: url("../fonts/Roboto-Light.ttf") }**/
+/**
+TODO 15: COMENTAR CODIGO CSS
+ */
+/**
+establecemos el CSS común para toda la app
+ */
+
+/**
+el body tendra estas caracteristicas:
+ */
 body {
     background: black;
     margin: 0;
     font-family: "Roboto Light", sans-serif;
 }
+/**
+la interfaz de la app tendra un fondo de imagen y un ancho y un largo fijo (Samsung S5)
+ademas de esto, declaramos que cada fila tendra un porcentaje del largo gracias a grid
+ */
 
 .interfaz {
     background-image: url("../img/whatsappBackground.jpg");
@@ -12,6 +26,10 @@ body {
     display: grid;
     grid-template-rows: 10% 50% 10% 30%;
 }
+/**
+la vista de los mensajes etsa hecha mediante flex para poderlos visualizar de abajo
+hacia arriba mediante las propiedades flex
+ */
 
 .vistaMensajes {
     display: flex;
@@ -19,6 +37,10 @@ body {
     flex-direction: column;
     align-items: flex-end;
 }
+/**
+la cabecera tendra una imagen y un texto puramente estetico mediante grid
+e indicando que la cabecera solo ocupa una fila
+ */
 
 .cabecera {
     display: grid;
@@ -26,10 +48,14 @@ body {
     font-weight: bold;
     background-color: #131313;
     border: black 1px solid;
-    grid-template-columns: 20% 90%;
+    grid-template-columns: 20% 80%;
     grid-template-rows: 100%;
 }
 
+/**
+la imagen de la cabecera tendra sus propias propiedades,
+imitando las de WhatsApp
+ */
 .cabecera > img {
     width: 40px;
     height: 40px;
@@ -43,16 +69,26 @@ body {
     align-self: center;
 }
 
+/**
+al nombre de usuario le asociamos un tamaño X
+ */
 #usuario {
     font-size: 1rem;
     margin-bottom: 0;
 }
 
+/**
+al estado, otro mas pequeño que el anterior para que predomine el usuario
+ */
 #estado {
     font-size: 0.8rem;
     margin-top: 0;
 }
 
+/**
+el textarea (inputBox), esta hecho mediante flex y el uso de wrap
+para redimensionar acorde al ancho de la app
+ */
 .inputBox {
     display: flex;
     flex-direction: row;
@@ -63,11 +99,17 @@ body {
     padding: 3px;
 }
 
+/**
+a los botones del inputBox les asignamos tamaño X
+ */
 .inputBox > button {
     width: 20%;
     height: 100%;
 }
 
+/**
+asignamos propiedades especificas al textarea meramente esteticas
+ */
 .inputBox > textarea {
     font-family: "Roboto Light", sans-serif;
     grid-column-start: 2;
@@ -80,10 +122,15 @@ body {
     outline: none;
 }
 
+/**
+establecemos que el scroll no sea visible
+ */
 ::-webkit-scrollbar {
     display: none;
 }
-
+/**
+el contenedor de botones esta hecho mediante flex
+ */
 .botones {
     display: flex;
     flex-direction: row;
@@ -93,7 +140,9 @@ body {
     background-color: #131313;
     padding: 3px;
 }
-
+/**
+el boton de enviar tiene un estilo especial y por ello tiene su propio ID
+ */
 #enviar {
     width: 35px;
     height: 35px;
@@ -102,7 +151,9 @@ body {
     margin-left: 15px;
     border: none;
 }
-
+/**
+en este apartado, establecemos propiedades especificas a cada boton no caracter
+ */
 .button:nth-child(21) {
     width: 15%;
 }
@@ -123,6 +174,11 @@ body {
     width: 15%;
 }
 
+/**
+establecemos la propiedad :hover para que cuando pasemos por encima mediante
+raton, cambie el fondo del boton a uno mas claro paar que el usuario sepa
+que esta pasando por encima de este
+ */
 .button:hover {
     background-color: dimgrey;
 }
@@ -130,7 +186,9 @@ body {
 #enviar:hover {
     background-color: grey;
 }
-
+/**
+estilo para cada boton de manera generica
+ */
 .button {
     font-family: "Roboto Light", sans-serif;
     border-radius: 10px;
@@ -140,7 +198,9 @@ body {
     background-color: #5b5b5b;
     border: black 1px solid;
 }
-
+/**
+estilos para cada mensaje
+ */
 .mensaje {
     color: white;
     background: #131313;
@@ -150,18 +210,20 @@ body {
     border-radius: 7px;
     margin: 3px;
 }
-
+/**
+dentro de la vista de los mensajes, cogemos la fecha actual (div que se genera mediante JS),
+y le damos un estilo propio ya que no es un mensaje
+ */
 .vistaMensajes > .fechaActual {
     align-self: center;
-    /*
-    margin-top: 0;
-    margin-bottom: 82%;
-    position: absolute;*/
     background: darkgray;
     border-radius: 5px;
     font-size: 12px;
     padding: 2px;
 }
+/**
+estilo semejante a la hora que podemos ver en WhatsApp
+ */
 
 .hora {
     font-size: 10px;
@@ -169,6 +231,9 @@ body {
     margin-top: 2px;
     margin-left: 100px;
 }
+/**
+estilos propios para el teclado de emojis
+ */
 .emojis{
     display: none;
     flex-direction: row;
@@ -178,8 +243,18 @@ body {
     background-color: #131313;
     padding: 3px;
 }
+.emojis > .button{
+    width: 10%;
+    height: 25%;
+}
+.emojis > .button:nth-child(31){
+    width: 100%;
+}
 
-
+/**
+media query adaptativo a cualquier tipo de dispositivo movil mediante
+la propiedad vh y vw
+ */
 @media only screen and (max-width: 400px){
     .interfaz {
         background-image: url("../img/whatsappBackground.jpg");
@@ -190,6 +265,9 @@ body {
     }
 
 }
+/**
+propiedades especificas para el tamaño desktop de la app
+ */
 @media only screen and (min-width: 600px) {
     body {
         background-color: black;
