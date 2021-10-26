@@ -9,9 +9,10 @@ establecemos el CSS común para toda la app
 /**
 el body tendra estas caracteristicas:
  */
-*{
+* {
     font-family: 'Roboto', sans-serif;
 }
+
 body {
     background: black;
     margin: 0;
@@ -40,7 +41,6 @@ hacia arriba mediante las propiedades flex
     flex-direction: column;
     align-items: flex-end;
     overflow-y: scroll;
-    scroll-behavior: auto;
 }
 
 /**
@@ -234,6 +234,7 @@ y le damos un estilo propio ya que no es un mensaje
     border-radius: 5px;
     font-size: 12px;
     padding: 2px;
+    margin-top: auto;
 }
 
 /**
