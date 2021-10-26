@@ -60,7 +60,7 @@ const APP = {
         //este metodo es una manera de buscar funciones que se llamen igual que un string que le pasemos y las ejecute
     },
     /**
-     * TODO 14: BOTON DE EMOJIS/GIF
+     * TODO 14: BOTON DE EMOJIS/GIF ✔
      * cuando se pulsa el boton de gif, dependiendo de que teclado este en pantalla, mostrara los emojis o el teclado convencional
      */
     gif: function () {
