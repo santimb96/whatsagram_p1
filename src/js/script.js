@@ -49,7 +49,6 @@ const APP = {
                 }
             }.bind(this))
         })
-
     },
     /**
      * TODO 2: REALIZAR CHEQUEO DEL VALOR DE LOS BOTONES E IR A SUS FUNCIONES ✔

@@ -41,3 +41,15 @@ También se *linkea* hacia la hoja de estilos externa, así como a webs externas
 
 ## DIFICULTADES ENCONTRADAS
 
+### BOTÓN "GIF/EMOJI":
+
+Tal y como comenté en clase, mi intención con este botón es hacer un simple reemplazo de teclado mediante las propiedades *display: flex/none*. Sin embargo, a la hora de obtener el estilo de cada elemento para detectar cuál está en *none* y cuál en *flex*, me obtenía el elemento pero no el estilo. El código era tal que así: `elemento.style.display === "none/flex"`.
+
+### MAYÚSCULAS:
+
+A la hora de fijar los estados de las mayúsculas, pueden darse dos soluciones principales: utilizar dos booleanos o bien un contador que almacene, de manera global, los estados que vayamos fijando para controlar cada casuística. En mi caso, el mayor conflicto que podía tener radica en un conflicto entre el doble clic y el clic convencional, para comprobar si se ha presionado mayúscula de un carácter o bien mayúsculas permanentes. Por lo tanto, mi solución pasa por contener un contador con los diversos estados y tener tres funciones (modularidad), las cuales cada una maneja un tipo de estado: minúsculas, mayúsculas y mayúsculas permanentes (ver TODOS 4, 8 Y 9 en *script.js*).
+
+### FLEX/GRID:
+
+En relación con la hoja de estilos, la mayor dificultad recae en la falta de práctica previa con esto y la adaptación rápida frente a flex y grid, ambas metodologías son complejas de gestionar y requieren de mucha práctica. 
+
