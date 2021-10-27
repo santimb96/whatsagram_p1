@@ -147,9 +147,12 @@ el contenedor de botones esta hecho mediante flex
 /**
 el boton de enviar tiene un estilo especial y por ello tiene su propio ID
  */
+/**
+en este apartado, establecemos propiedades especificas a cada boton no caracter
+ */
 #enviar {
     background-image: url("../img/enviar.png");
-    background-repeat:no-repeat;
+    background-repeat: no-repeat;
     background-position: 50% 50%;
     background-size: 20px;
     width: 37px;
@@ -159,31 +162,52 @@ el boton de enviar tiene un estilo especial y por ello tiene su propio ID
     margin-left: 3px;
 }
 
-/**
-en este apartado, establecemos propiedades especificas a cada boton no caracter
- */
-#gif{
+#gif {
     margin-right: 5px;
 }
-#button{
+
+#button {
     background-image: url("../img/shift.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 25px;
 }
 
-#izquierda{
+#izquierda {
     background-image: url("../img/izquierda.png");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 40px;
+    background-size: 25px;
 }
-#derecha{
+
+#derecha {
     background-image: url("../img/derecha.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 20px;
 }
+
+#intro {
+    background-image: url("../img/intro.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20px;
+}
+
+#c {
+    background-image: url("../img/c.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20px;
+}
+
+#ce {
+    background-image: url("../img/ce.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20px;
+}
+
 .button:nth-child(21) {
     width: 15%;
 }
@@ -216,6 +240,8 @@ que esta pasando por encima de este
 .button:active {
     background: #E1D9D1;
     color: #131313;
+    font-size: 1.5em;
+    font-weight: bold;
 }
 
 #enviar:hover {
@@ -233,6 +259,7 @@ estilo para cada boton de manera generica
     color: white;
     background-color: #5b5b5b;
     border: black 1px solid;
+    transition: font-size 0.2s, color 0.6s;
 }
 
 /**
