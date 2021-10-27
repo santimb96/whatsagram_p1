@@ -88,3 +88,7 @@ La propiedad `Word-wrap: break-Word;` (**_CSS_**), determina que si el contenido
 fijado, el texto en este caso realiza un salto de línea en el mensaje que se imprime por pantalla, de manera que así
 impedimos que el texto se desborde por el ancho y de paso habilitamos los saltos de línea automáticos, que se agradecen
 a la lectura de los mensajes.
+
+Por otra parte, cabe entender en cuenta que sucede (en mi dispositivo), un problema visto en clase con el profesor relacionado con la vista en terminal móvil: la App no se ajustaba al ancho y largo muy a pesar de que en la vista móvil se utilizaba las propiedades *vh* y *vm* en los *height* y *width* despectivamente.
+Este problema solo me sucede al utilizar la vista móvil en Chrome; en Firefox o Edge, por ejemplo, esto no me sucede, por lo que el problema no recae
+en un mal uso o adaptación del CSS de la App.

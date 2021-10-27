@@ -19,7 +19,7 @@ const APP = {
 
         let vistaMensajes = document.querySelector(".vistaMensajes"); //obtememos la vista de los mensajes
 
-        let fecha = `${fechaActual.getDay()} de ${meses[fechaActual.getMonth()]} de ${fechaActual.getFullYear()}`; //obtenemos la fecha con un formato X
+        let fecha = `${fechaActual.getDate()} de ${meses[fechaActual.getMonth()]} de ${fechaActual.getFullYear()}`; //obtenemos la fecha con un formato X
 
         /**
          *
@@ -37,7 +37,7 @@ const APP = {
 
         boton.addEventListener("dblclick", function () { //este listener se encargara de escuchar el evento doble click si se produce
             this.permaMayus(); //ejecuta la funcion de las mayusculas permanentes
-        }.bind(this))
+        }.bind(this));
 
         this.teclado.forEach(boton => { //los recorro para conocer los valores de cada uno
             boton.addEventListener("click", function () {
@@ -107,6 +107,7 @@ const APP = {
      * TODO 4: MAYUSCULAS A UN TOQUE; MAYUS/MINUS DEPENDIENDO DEL ESTADO DEL CONTADOR ✔
      */
     mayuscula: function () { //comprueba si el estado de la tecla es 0 o 1
+        const shift = document.getElementById("button");
         if (this.contadorMayus === 0) { // si el estado es 0 (minus), establezco que sea 1 y paso las teclas a mayusculas
             this.contadorMayus = 1;
             this.teclado.forEach(boton => {
@@ -114,6 +115,7 @@ const APP = {
             });
         } else if (this.contadorMayus >= 1) { //si el estado es 1 o 2 (mayus o mayusculas permanentes), establezco que se ponga en 0 y minus
             this.contadorMayus = 0;
+            shift.style.backgroundColor = "#5b5b5b";
             this.minus();
         }
     },
@@ -121,6 +123,8 @@ const APP = {
      * TODO 8: MAYUSUCULAS PERMANENTES ✔
      */
     permaMayus: function () { //recorro las teclas y establezco que sean permanentemente mayusculas y estado 2(permanente)
+        const shift = document.getElementById("button");
+        shift.style.backgroundColor = "#E1D9D1";
         this.contadorMayus = 2;
         this.teclado.forEach(boton => {
             boton.textContent = boton.textContent.toUpperCase();
@@ -186,7 +190,7 @@ const APP = {
 
             let hora = ("0" + fecha.getHours()).slice(-2) + ':' + ("0" + fecha.getMinutes()).slice(-2);
 
-            vistaMensajes.innerHTML += `<div class="mensaje">${this.input.value}<p class="hora">${hora}</p></div>`;
+            vistaMensajes.innerHTML += `<div class="mensaje">${this.input.value}<p class="hora">${hora} ✔✔</p></div>`;
 
             this.input.value = "";
 

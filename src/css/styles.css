@@ -14,7 +14,7 @@ el body tendra estas caracteristicas:
 }
 
 body {
-    background: black;
+    background: dimgray;
     margin: 0;
 }
 
@@ -101,8 +101,9 @@ para redimensionar acorde al ancho de la app
     flex-wrap: wrap;
     align-content: flex-start;
     align-items: flex-end;
-    margin-top: 25px;
+    margin-top: 21px;
     padding: 3px;
+    background: #131313;
 }
 
 /**
@@ -120,12 +121,14 @@ asignamos propiedades especificas al textarea meramente esteticas
     font-family: "Roboto Light", sans-serif;
     grid-column-start: 2;
     border-radius: 10px;
-    background-color: #535353;
+    background-color: #131313;
     color: white;
     font-size: 18px;
     resize: none;
-    height: 28px;
+    height: 30px;
+    width: 65%;
     outline: none;
+    border: 1px solid white;
 }
 
 /**
@@ -145,17 +148,42 @@ el contenedor de botones esta hecho mediante flex
 el boton de enviar tiene un estilo especial y por ello tiene su propio ID
  */
 #enviar {
-    width: 35px;
-    height: 35px;
-    background-color: #131313;
+    background-image: url("../img/enviar.png");
+    background-repeat:no-repeat;
+    background-position: 50% 50%;
+    background-size: 20px;
+    width: 37px;
+    height: 37px;
     border-radius: 50%;
-    margin-left: 15px;
-    border: none;
+    border: 1px solid black;
+    margin-left: 3px;
 }
 
 /**
 en este apartado, establecemos propiedades especificas a cada boton no caracter
  */
+#gif{
+    margin-right: 5px;
+}
+#button{
+    background-image: url("../img/shift.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 25px;
+}
+
+#izquierda{
+    background-image: url("../img/izquierda.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 40px;
+}
+#derecha{
+    background-image: url("../img/derecha.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20px;
+}
 .button:nth-child(21) {
     width: 15%;
 }
@@ -233,7 +261,7 @@ y le damos un estilo propio ya que no es un mensaje
     background: darkgray;
     border-radius: 5px;
     font-size: 12px;
-    padding: 2px;
+    padding: 3px;
     margin-top: auto;
 }
 
@@ -291,7 +319,7 @@ propiedades especificas para el tamaño desktop de la app
  */
 @media only screen and (min-width: 600px) {
     body {
-        background-color: black;
+        background: dimgray;
         display: grid;
         grid-template-columns: 100%;
         justify-items: center;
