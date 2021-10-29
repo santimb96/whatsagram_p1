@@ -240,7 +240,7 @@ que esta pasando por encima de este
 .button:active {
     background: #E1D9D1;
     color: #131313;
-    font-size: 1.5em;
+    font-size: 1.7em;
     font-weight: bold;
 }
 
@@ -259,7 +259,10 @@ estilo para cada boton de manera generica
     color: white;
     background-color: #5b5b5b;
     border: black 1px solid;
-    transition: font-size 0.2s, color 0.6s;
+    /**
+    animacion de transicion en los botones para hacer mas evidente la pulsacion de estos(no se aplica a las imagenes)
+     */
+    transition: font-size 0.2s, color 0.2s;
 }
 
 /**
